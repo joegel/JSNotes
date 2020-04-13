@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Crash Course</title>
+    <style>
+        body {
+            margin: auto;
+            max-width: 70ch;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        code {
+            font-family: "consolas", monospace;
+            max-width: 60ch;
+            display: inline-block;
+        }
+
+        pre {
+            max-width: 60ch;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+<h1 id="javascript-notes">JavaScript Notes</h1>
+<h2 id="introductory-info">Introductory Info</h2>
+<h3 id="what-is-javascript">What is JavaScript?</h3>
+<ul>
+<li>High level interpreted programming language</li>
+<li>Conforms to the <strong>ECMAScript</strong> specification</li>
+<li>Multi-paradigm</li>
+<li>Runs on the client/browser as well as on the server (Node.js)</li>
+</ul>
+<h3 id="why-learn-javascript">Why learn JavaScript?</h3>
+<ul>
+<li>It is the programming language of the browser<ul>
+<li>If you want to run code on a user&#39;s machine, you need JS. Other languages like Python and PHP run on another machine.</li>
+</ul>
+</li>
+<li>Build very interactive user interfaces with frameworks like React</li>
+<li>Used in building very fast server side and full-stack applications</li>
+<li>Used in mobile development (React Native Native Script, Ionic)</li>
+<li>Used in desktop application development (Electron JS)</li>
+</ul>
+<hr>
+<h2 id="course-contents">Course Contents</h2>
+<ol>
+<li>Variables &amp; Data Types</li>
+<li>Arrays</li>
+<li>Object Literals</li>
+<li>Methods for strings, arrays, objects, etc.</li>
+<li>Loops - for, while, for…of, forEach, map</li>
+<li>Conditionals (if, ternary &amp; switch)</li>
+<li>Functions (normal &amp; arrow)</li>
+<li>OOP (prototypes &amp; classes)</li>
+<li>DOM Selection</li>
+<li>DOM Manipulation</li>
+<li>Events</li>
+<li>Basic Form Validation</li>
+</ol>
+<hr>
+<h2 id="basics">Basics</h2>
+<p>JS is inserted into an HTML document using the <code>&lt;script&gt;</code> tag.</p>
+<p>JS should be added within the <code>&lt;body&gt;</code> element but after all other content (<em>this is to ensure all content loads before the script runs</em>).</p>
+<p>While JS can be added directly into the <code>&lt;script&gt;</code> tag, it is best practice to link a reference file, like this:</p>
+<pre><code class="language-HTML">&lt;script&gt;src=&quot;main.js&quot;&lt;/script&gt;</code></pre>
+<h3 id="the-console">The Console</h3>
+<p>To see what your JS is outputting, you can view the <strong>console</strong>.</p>
+<p>In Firefox, the console is accessible through the shortcut <code>ctrl + shift + k</code>.</p>
+<p>You can display to the console directly with the command: </p>
+<pre><code class="language-javascript">console.log();</code></pre>
+<hr>
+<h2 id="variables">Variables</h2>
+<h3 id="types-of-variables">Types of Variables</h3>
+<p>In JS, we have three ways to set variables:</p>
+<ol>
+<li><code>var</code></li>
+<li><code>let</code></li>
+<li><code>const</code></li>
+</ol>
+<h3 id="1-var">1. <code>var</code></h3>
+<p>You don&#39;t want to use <code>var</code> anymore because it&#39;s global in scope.</p>
+<p>Now <code>let</code> and <code>const</code> are the new standards.</p>
+<h3 id="2-let">2. <code>let</code></h3>
+<p>The <code>let</code> variable can be changed and reassigned.</p>
+<h3 id="3-const">3. <code>const</code></h3>
+<p>The <code>const</code> variable stays constant once it is set. Any attempts to change it will produce an error.</p>
+<p><em>Good rule of thumb: unless you know you&#39;ll be changing a variable down the line, use <code>const</code> instead of <code>let</code>.</em></p>
+<hr>
+<h3 id="data-types-for-variables">Data Types for Variables</h3>
+<p>In JS, primitive data types refer to things written directly to the computer. They include:</p>
+<ol>
+<li><code>String</code></li>
+<li><code>Numbers</code></li>
+<li><code>Boolean</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+</ol>
+<h3 id="1-string">1. <code>String</code></h3>
+<p><strong>Strings</strong> are a series of characters enclosed in either double or single quotes.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">const name = &#39;John&#39;;</code></pre>
+<h3 id="2-numbers">2. <code>Numbers</code></h3>
+<p><strong>Numbers</strong> are any number without any quotes.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">const name = 30;</code></pre>
+<h3 id="3-boolean">3. <code>Boolean</code></h3>
+<p><strong>Booleans</strong> are variables with either a <code>true</code> or <code>false</code> value.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">const name = true;</code></pre>
+<h3 id="4-null">4. <code>null</code></h3>
+<p><strong>Null</strong> only includes the quoteless value <code>null</code>, and essentially indicates that a field is empty.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">const x = null;</code></pre>
+<h3 id="5-undefined">5. <code>undefined</code></h3>
+<p><strong>Undefined</strong> is a variable similar to <code>null</code>, but if we use <code>let</code> we don&#39;t need to explicitly define it.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">const y = undefined;</code></pre>
+<p>or:</p>
+<pre><code class="language-javascript">let z;</code></pre>
+<p>Typingng any of these variables to the console using <code>console.log()</code> will return their variable type.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">console.log(z);</code></pre>
+<p>will return:</p>
+<pre><code class="language-javascript">undefined</code></pre>
+<hr>
+<h2 id="strings">Strings</h2>
+<h3 id="concatenation">Concatenation</h3>
+<p>If we want to mix other variable types (or even other strings) in with astring, we can use a method called &quot;concatenation.&quot;</p>
+<p>There are two ways to do this.</p>
+<p>Concatenation is the older, more tedious method and uses quotes and plus signs, like this:</p>
+<pre><code class="language-javascript">const name = &#39;John&#39;;
+const age = 30;
+
+console.log(&#39;My name is&#39; + name + &#39; and I am&#39; + age);</code></pre>
+<p>which would output:</p>
+<pre><code>My name is John and I am 30</code></pre><h3 id="template-string">Template String</h3>
+<p>The more modern method is to use &quot;Template Literals&quot;, which employ backticks, dollar signs and curly braces, like this:</p>
+<pre><code class="language-javascript">const name = &#39;John&#39;;
+const age = 30;
+
+console.log(`My name is ${name} and I am ${age}`);</code></pre>
+<p>which also outputs:</p>
+<pre><code>My name is John and I am 30</code></pre><hr>
+<h2 id="string-properties--methods">String Properties &amp; Methods</h2>
+<p>Properties and Methods are ways to evaluate or manipulate strings. They are denoted by a name, and appended to string variables with a period.</p>
+<p><em>Properties do not have parentheses. If it&#39;s something that looks like a property and has parentheses it&#39;s a method.</em></p>
+<h3 id="1-length">1. <code>.length</code></h3>
+<p>The <strong>.length</strong> property counts the number of characters in a given string.</p>
+<p>For example:</p>
+<pre><code class="language-js">const s = &#39;Hello World!&#39;;
+
+console.log(s.length);</code></pre>
+<p>will output:</p>
+<pre><code class="language-js">12</code></pre>
+<h3 id="2-touppercase--tolowercase">2. <code>.toUpperCase</code> &amp; <code>.toLowerCase</code></h3>
+<p>The <strong>.toUpperCase</strong> &amp; <strong>.toLowerCase</strong> methods convert a given string to either all upper or all lowercase characters.</p>
+<p>For example:</p>
+<pre><code class="language-js">const s = &#39;Hello World!&#39;;
+
+console.log(s.toUpperCase());
+console.log(s.toLowerCase());</code></pre>
+<p>will output:</p>
+<pre><code class="language-js">HELLO WORLD!
+hello world!</code></pre>
+<h3 id="3-substring">3. <code>.subString</code></h3>
+<p>The <strong>.subString</strong> method will isolate a specific range of characters from the larger string, and output it as a separate sub-string.</p>
+<p>Within the method parentheses you need to specify the starting and ending index, which is separated by a comma.</p>
+<p>For example:</p>
+<pre><code class="language-js">const s = &#39;Hello World!&#39;;
+
+console.log(s.subString(0, 5));</code></pre>
+<p>will output:</p>
+<pre><code>Hello</code></pre><h3 id="4-split">4. <code>.split</code></h3>
+<p>The <strong>.split</strong> method will split a given string into an array (more on those later).</p>
+<p>Within the inner parentheses, you can specify how you&#39;d like to split the string.</p>
+<p>For example, to split by each letter, you would use empty quotes.</p>
+<p>Meaning:</p>
+<pre><code class="language-js">const s = &#39;Hello World!&#39;;
+
+console.log(s.split(&#39;&#39;));</code></pre>
+<p>will output:</p>
+<pre><code class="language-js">[&quot;H&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;, &quot; &quot;, &quot;W&quot;, &quot;o&quot;, &quot;r&quot;, &quot;l&quot;, &quot;d&quot;, &quot;!&quot;]</code></pre>
+<p>You can also define any kind of separator.</p>
+<p>For example, if you wanted to create an array out of tags within a blog post, all separated by commas, you could define your separator as <code>.split(&#39;, &#39;)</code>, which would break up each of the tags into separate array elements.</p>
+<p>Let&#39;s say you had:</p>
+<pre><code class="language-js">const s = &#39;technology, computers, it, code&#39;;
+
+console.log(s.split(&#39;, &#39;));</code></pre>
+<p>It would output:</p>
+<pre><code class="language-js">[&quot;technology&quot;, &quot;computers&quot;, &quot;it&quot;, &quot;code&quot;]</code></pre>
+<hr>
+<h2 id="arrays">Arrays</h2>
+<p>Arrays are variables that hold multiple values.</p>
+<p>There are a few ways to make arrays.</p>
+<p>The first is not so common, but we&#39;ll review it anyways.</p>
+<h3 id="array-constructor">Array Constructor</h3>
+<p>This uses the <code>new</code> keyword, which lets us know what comes agter is a constructor.</p>
+<p>In this case we have:</p>
+<pre><code class="language-js">const numbers = new Array(1,2,3,4,5);</code></pre>
+<p>Now if we go:</p>
+<pre><code class="language-js">console.log(numbers);</code></pre>
+<p>Then we get an array with 5 values:</p>
+<pre><code class="language-js">[1, 2, 3, 4, 5]</code></pre>
+<h3 id="set-brackets">Set Brackets</h3>
+<p>For the most part, you&#39;re going to create an array by just setting the brackets and populating it with items.</p>
+<p>For example:</p>
+<pre><code class="language-js">const fruits = [&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;];</code></pre>
+<p>One important thing is that you can mix data types within the same array.</p>
+<p>For example:</p>
+<pre><code class="language-js">const fruits = [&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;, true, 2];</code></pre>
+<p>This is also a perfectly valid array.</p>
+<hr>
+<h2 id="manipulating-arrays">Manipulating Arrays</h2>
+<h3 id="isolating-array-items">Isolating Array Items</h3>
+<p>Now, let&#39;s say we want to pull out just one item from our list of fruits.</p>
+<p>We can do this as follows:</p>
+<pre><code class="language-js">const fruits = [&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;];
+
+console.log(fruits[1]);</code></pre>
+<p>Which would output:</p>
+<pre><code class="language-js">oranges</code></pre>
+<p>Two important things to note here. </p>
+<ol>
+<li>The number we chose to call was wrapped in brackets. This is how arrays work.</li>
+<li>Even though we chose 1, we got the second item in the list. This is because arrays (and everything in JS) count from 0 up.</li>
+</ol>
+<h3 id="adding-array-items-general-method">Adding Array Items (general method)</h3>
+<p>Another thing we can do is add an item to an array.</p>
+<p>The way we would do this is as follows:</p>
+<pre><code class="language-js">const fruits = [&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;];
+
+fruits[3] = &#39;grapes&#39;;</code></pre>
+<p>Now when we call <code>fruits</code> back up…</p>
+<pre><code class="language-js">console.log(fruits);</code></pre>
+<p>We get:</p>
+<pre><code class="language-js">[&quot;apples&quot;, &quot;oranges&quot;, &quot;pears&quot;, &quot;grapes&quot;]</code></pre>
+<h3 id="adding-array-items-push-and-unshift-methods">Adding Array Items (<code>.push</code> and <code>.unshift</code> methods)</h3>
+<p>The previous method works fine if you know how many items are in your array, but what if you don&#39;t? Or what if you want to add to the beginning of an array?</p>
+<p>In that case, you can use the <code>.push</code> and <code>.unshift</code> methods to append a new array item to the end or beginning of a string respectively. All without needing to specify a number.</p>
+<p>For example:</p>
+<pre><code class="language-js">const fruits = [&#39;apples&#39;, &#39;oranges&#39;, &#39;pears&#39;];
+
+fruits.push(&#39;mangoes&#39;);
+
+fruits.unshift(&#39;strawberries&#39;);</code></pre>
+<p>Now when we call <code>fruits</code> back up…</p>
+<pre><code class="language-js">console.log(fruits);</code></pre>
+<p>We get:</p>
+<pre><code class="language-js">[&quot;strawberries&quot;, &quot;apples&quot;, &quot;oranges&quot;, &quot;pears&quot;, &quot;mangoes&quot;]</code></pre>
+<h3 id="additional-array-methods">Additional Array Methods</h3>
+<p>What if we want to knock the last item off a list?</p>
+<ul>
+<li>The <code>.pop</code> method does exactly that.</li>
+</ul>
+<p>What if we want to find what number within an array a certain value is?</p>
+<ul>
+<li>The <code>.indexOf</code> method allows you to input any value and returns its index.</li>
+</ul>
+<p>What if we want to squeeze new elements in to an existing array, and/or cut out other elements in the process?</p>
+<ul>
+<li>The <code>.splice</code> element does just that. The first two parameters are numbers, which define the <strong>position</strong> where the new elements are to be inserted and <strong>how many</strong> elements should be removed. The rest of the parameters define the new elements <strong>to be added</strong>.</li>
+</ul>
+<p><em>Even more array methods can be found <a href="https://www.w3schools.com/js/js_array_methods.asp">here</a>.</em></p>
+<hr>
+<h2 id="object-literals">Object Literals</h2>
+<p>Object literals are essentially key value pairs grouped under a single constant.</p>
+<p>So let&#39;s do something simple like a person:</p>
+<pre><code class="language-js">const person = {
+    firstName: &#39;John&#39;,
+    lastName: &#39;Doe&#39;,
+    age: 30,
+    hobbies: [&#39;music&#39;, &#39;movies&#39;, &#39;sports&#39;],
+    address: {
+        street: &#39;50 main st&#39;,
+        city: &#39;Boston&#39;,
+        state: &#39;MA&#39;
+    }
+};</code></pre>
+<p>Now, if we log the variable <code>person</code>, it will return all of these things.</p>
+<p>Meaning:</p>
+<pre><code class="language-js">console.log(person);</code></pre>
+<p>Outputs the following object:</p>
+<pre><code class="language-js">{ firstName: &#39;John&#39;, lastName: &#39;Doe&#39;, age: 30, hobbies: [&#39;music&#39;, &#39;movies&#39;, &#39;sports&#39;], address: {street: &#39;50 main st&#39;, city: &#39;Boston&#39;, state: &#39;MA&#39;}};</code></pre>
+<p>An important thing to note about the above object, is that it can contain any variable type (and can even include other objects within it!)</p>
+<h3 id="applying-methods-to-objects">Applying Methods to Objects</h3>
+<p>Let&#39;s say we want to just pull a single value from a given object.</p>
+<p>In our case we can simply append another property to the given object name, like this:</p>
+<pre><code class="language-js">console.log(person.firstName);</code></pre>
+<p>Which will output:</p>
+<pre><code class="language-js">John</code></pre>
+<p>You can also output multiple values this way, by separating them with a comma.</p>
+<p>For example:</p>
+<pre><code class="language-js">console.log(person.firstName, person.lastName);</code></pre>
+<p>Which will output:</p>
+<pre><code class="language-js">John Doe</code></pre>
+<p>Another thing you can do is nab a single item from an array that is within an object.</p>
+<p>For example:</p>
+<pre><code class="language-js">console.log(person.hobbies[1]);</code></pre>
+<p>Will output:</p>
+<pre><code class="language-js">movies</code></pre>
+<p><em>That&#39;s because <code>&#39;movies&#39;</code> was the second item in the <code>hobbies</code> array, meaning it had an index of <code>1</code>.</em></p>
+<p>You can also freely add new properties to an existing object.</p>
+<p>Just append a new property to the existing object with a period, then define it with an equal sign.</p>
+<p>For example:</p>
+<pre><code class="language-js">person.email = &#39;john@gmail.com&#39;;</code></pre>
+<p>Will add the new value of <code>email</code> to the existing object <code>person</code>.</p>
+<hr>
+<h2 id="arrays-of-objects">Arrays of Objects</h2>
+<p>Alot of the time, we&#39;ll be dealing with arrays of objects, and these are simple to create.</p>
+<p>Take the following &#39;todo&#39; array:</p>
+<pre><code class="language-js">const todos = [
+    {
+        id: 1,
+        text: &#39;Take out trash&#39;,
+        isCompleted: true
+    },
+    {
+        id: 2,
+        text: &#39;Meeting with boss&#39;,
+        isCompleted: true
+    },
+    {
+        id: 3,
+        text: &#39;Dentist appt&#39;,
+        isCompleted: false
+    },
+];</code></pre>
+<p>Now, let&#39;s say you wanted to grab the text from todo item number two.</p>
+<p>Easy enough:</p>
+<pre><code class="language-js">console.log(todos[1].text);</code></pre>
+<p>Will output:</p>
+<pre><code>Meeting with boss</code></pre><hr>
+<blockquote>
+<h3 id="a-quick-aside-about-json"><strong>A quick aside about JSON</strong></h3>
+<p><strong>JSON</strong> is a very popular for full-stack development and using APIs.</p>
+<p>When you&#39;re sending data to a server, you usually send it in JSON.</p>
+<p>The thing is, it&#39;s very similar to object literals, and you can convert between the tools using free tools like <a href="https://www.freeformatter.com/json-formatter.html">these</a>. </p>
+<p>When you do this conversion, you&#39;ll see the syntax between a JS object array and JSON is very similar (only difference is only double quotes in JSON). </p>
+<p>So, what if you want to convert your JS object to JSON directly in your script?</p>
+<p>Turns out it&#39;s very easy.</p>
+<p>The way you do it is as follows:</p>
+<pre><code class="language-js">const todoJSON = JSON.stringify(todos);</code></pre>
+<p>Outputting this to a <code>console.log</code> will produce a fully JSON version of the original JS object array.</p>
+<p>And this is how you would send that data to a server.<br>.</p>
+</blockquote>
+<hr>
+<h2 id="loops">Loops</h2>
+<h3 id="for-loops">For Loops</h3>
+<p>For Loops are structured as follows:</p>
+<ul>
+<li><strong><code>for()</code></strong> : declares that a for loop is starting.</li>
+<li><strong><code>let i = 0;</code></strong> : defines a variable and establishes a starting condition (in this case of 0),</li>
+<li><strong><code>i &lt; 10;</code></strong> : sets up a condition to check against after each iteration of the loop. As soon as this expression comes up false, the loop will stop.</li>
+<li><strong><code>i++</code></strong> : this establishes an iterator that will change the variable after each loop (in this case <code>++</code> = add 1). Without an iterator, the loop will run forever.</li>
+<li><strong><code>console.log(i);</code></strong> : this will print out the value for our variable after each loop. We can choose to have it print a variety of things to console.</li>
+</ul>
+<p>Now here it is all together:</p>
+<pre><code class="language-js">for(let i = 0; i &lt; 10; i++) {
+    console.log(i);
+}</code></pre>
+<h3 id="while-loops">While Loops</h3>
+<p>While Loops are structured as follows:</p>
+<ul>
+<li><strong><code>let i = 0;</code></strong> : similar to a for loop, here we are setting up a variable for a starting point. Only in this case, we set it up outside the loop itself.</li>
+<li><strong><code>while(i &lt; 10){}</code></strong> : here we are establishing the condition under which the loop will run. The second this statement becomes false, the loop will stop.</li>
+<li><strong><code>console.log(i);</code></strong> : this instructs what the loop will output to console.</li>
+<li><strong><code>i++;</code></strong> : much like the for loop, it&#39;s key to include an iterator within the while loop, otherwise it will run endlessly.</li>
+</ul>
+<p>Now here it is all together:</p>
+<pre><code class="language-js">let i=0;
+while(i &lt; 10) {
+    console.log(i);
+    i++;
+}</code></pre>
+<h3 id="for-of-loop">For of Loop</h3>
+<p>For of loops are a much more efficient way of looping through object arrays, like this:</p>
+<pre><code class="language-js">const todos = [
+    {
+        id: 1,
+        text: &#39;Take out trash&#39;,
+        isCompleted: true
+    },
+    {
+        id: 2,
+        text: &#39;Meeting with boss&#39;,
+        isCompleted: true
+    },
+    {
+        id: 3,
+        text: &#39;Dentist appt&#39;,
+        isCompleted: false
+    },
+];</code></pre>
+<p>For of loops are structured as follows:</p>
+<ul>
+<li><strong><code>for()</code></strong> : this indicates that a for loop is starting.</li>
+<li><strong><code>let todo</code></strong> : this creates a new variable we will iterate on.</li>
+<li><strong><code>of todos</code></strong> : this allows our iterator to reference our existing object array.</li>
+<li><strong><code>{console.log(todo.text);}</code></strong> : this will cause our console to print the text variable from each object in the array.</li>
+</ul>
+<p>Now here it is all together:</p>
+<pre><code class="language-js">for(let todo of todos) {
+    console.log(todo.text);
+}</code></pre>
+<hr>
+<h2 id="high-order-array-methods">High Order Array Methods</h2>
+<p>These are the best methods to use when trying to iterate on arrays.</p>
+<h3 id="1-foreach">1. <code>.forEach</code></h3>
+<p>The <code>.forEach</code> method is structured as follows:</p>
+<ul>
+<li><strong><code>todos.forEach()</code></strong> : this targets a specific array and declares the method.</li>
+<li><strong><code>(function(todo))</code></strong> : all higher order array methods take in a function as a parameter, so we pass in a function. This callback function can take in multiple parameters, but the first one is going to be the variable that you want to use as each item, (or in this case each todo).</li>
+<li><strong><code>{console.log(todo.text);}</code></strong> : then this will output the text for each todo.</li>
+</ul>
+<p>Now here it is all together:</p>
+<pre><code class="language-js">todos.forEach(function(todo) {
+    console.log(todo.text);
+});</code></pre>
+<h3 id="2-map">2. <code>map</code></h3>
+<p>The <code>.map</code> method is structured as follows:</p>
+<ul>
+<li><p><strong><code>const todoText =</code></strong> : this method actually returns an array, so you need to assign a new variable. Because what we&#39;re doing is looping through and the return an array of just the text values.</p>
+</li>
+<li><p><strong><code>todos.map</code></strong> : this declares the method for the given object.</p>
+</li>
+<li><p><strong><code>(function(todo)</code></strong> : this establishes the function we&#39;ll take in as our first parameter.</p>
+</li>
+<li><p><strong><code>{return todo.text;});</code></strong> : this returns the text for each instance of the todo function that is mapping to the todos array.</p>
+</li>
+</ul>
+<p>Now here it is all together:</p>
+<pre><code class="language-js">const todoText = todos.map(function(todo) {
+    return todo.text;
+});</code></pre>
+<h3 id="3-filter">3. <code>filter</code></h3>
+<p>The <code>.filter</code> method is structured as follows:</p>
+<ul>
+<li><p><strong><code>const todoCompleted =</code></strong> : this method actually returns an array, so you need to assign a new variable. Because what we&#39;re doing is looping through and the return an array of just the values that meet a certain condition.</p>
+</li>
+<li><p><strong><code>todos.filter</code></strong> : this declares the method for the given object.</p>
+</li>
+<li><p><strong><code>(function(todo)</code></strong> : this establishes the function we&#39;ll take in as our first parameter.</p>
+</li>
+<li><p><strong><code>{return todo.isCompleted === true;});</code></strong> : this returns the values for each instance object in the todos array that meets our filter criteria.</p>
+</li>
+</ul>
+<p>Now here it is all together:</p>
+<pre><code class="language-js">const todoCompleted = todos.filter(function(todo) {
+    return todo.isCompleted === true;
+});</code></pre>
+<p>We can also chain these methods together.</p>
+<p>For example, if I just wanted the text of the array items we filtered as true, we could add <code>.map</code> to the end of the entire <code>.filter</code> function above:</p>
+<pre><code class="language-js">const todoCompleted = todos.filter(function(todo) {
+    return todo.isCompleted === true;
+}).map (function(todo) {
+    return todo.text;
+});</code></pre>
+<hr>
+<h2 id="conditionals">Conditionals</h2>
+<p>Conditionals allow us to set certain logical conditions for our functions.</p>
+<h3 id="1-else-if">1. <code>else if</code></h3>
+<p>For example, let&#39;s say:</p>
+<pre><code class="language-js">const x = 10;</code></pre>
+<p>So…</p>
+<pre><code class="language-js">if(x === 10) {
+    console.log(&#39;x is 10&#39;);
+}</code></pre>
+<blockquote>
+<p><em>(the difference between the <code>===</code> and the <code>==</code> is that the double equal just measures equal value whereas triple equal also measures data type)</em></p>
+</blockquote>
+<p>We can also account for the counterfactual with</p>
+<pre><code class="language-js">else {
+    console.log(&#39;x is NOT 10&#39;);
+}</code></pre>
+<p>These statements can be strung together to account for multiple contingencies by using <code>else if</code>.</p>
+<p>For example: </p>
+<pre><code class="language-js">if(x === 10) {
+    console.log(&#39;x is 10&#39;);
+} else if(x &gt; 10) {
+    console.log(&#39;x is greater than 10&#39;);
+} else {
+    console.log(&#39;x is less than 10&#39;);
+}</code></pre>
+<h3 id="2-ternary-operators">2. Ternary Operators</h3>
+<p>Ternary operators are a shorthand for the <code>else if</code> conditional.</p>
+<p>They are structured as follows:</p>
+<pre><code class="language-js">const x = 11;
+
+const color = x &gt; 10 ? &#39;red&#39; : &#39;blue&#39;;</code></pre>
+<p>In this case, logging the console will return <code>red</code>, because the variable <code>x</code> meets the condition <code>&gt; 10</code>.</p>
+<h3 id="3-switch-conditionals">3. <code>switch</code> conditionals</h3>
+<p>Switches are another way to evaluate a condition, which unlike ternaries are more suited to evaluating multiple cases.</p>
+<p>They are structured as follows:</p>
+<pre><code class="language-js">switch(color) {
+    case &#39;red&#39;:
+        console.log(&#39;color is red&#39;);
+        break;
+    case &#39;blue&#39;:
+        console.log(&#39;color is blue&#39;);
+        break;
+    default:
+        console.log(&#39;color is NOT red or blue&#39;);
+        break;
+}</code></pre>
+<hr>
+<h2 id="functions">Functions</h2>
+
+</body>
+</html>
