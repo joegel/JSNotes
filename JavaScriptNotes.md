@@ -686,7 +686,7 @@ todos.forEach(function(todo) {
 });
 ```
 
-### 2. `map`
+### 2. `.map`
 
 The `.map` method is structured as follows:
 
@@ -706,7 +706,7 @@ const todoText = todos.map(function(todo) {
 });
 ```
 
-### 3. `filter`
+### 3. `.filter`
 
 The `.filter` method is structured as follows:
 
@@ -737,7 +737,103 @@ const todoCompleted = todos.filter(function(todo) {
     return todo.text;
 });
 ```
+
+### 4. `.sort`
+
+This is similar to the above, but is meant explicitly meant to take a function and sort it by two variables at a time, iterating with a value of 1 or -1 to sort it within the array.
+
+For example, imagine we want to sort the following array by start date:
+
+```js
+const companies = [
+  {name: "Company One", category: "Finance", start: 1981, end: 2003},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+```
+
+Then we could run the following `.sort` function:
+
+
+
+```js
+const sortedCompanies = companies.sort(function(c1, c2){
+    if(c1.start > c2.start) {
+        return 1;
+    }   else {
+        return -1;
+    }
+});
+```
+
+We could use ternary operators and the arrow function syntax (more on that later) to make this even simpler.
+
+```js
+const sortedCompanies = companies.sort((c1, c2) => (c1.start > c2.start ? 1 : -1));
+```
+
+### 5. `.reduce`
+
+Reduce can be used to combine all the items in an array into one value.
+
+For example, let's say we wanted to calculate the total years for all companies, we could run the following `.reduce` function:
+
+```js
+const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0);
+```
+
+This function is actually performing a similar function to a `for` loop. It is iterating from a set starting point (the `0` in the `company` variable) and then iterating through and racking up a total.
+
 ---
+>### **Example of how we can simplify existing functions using higher order functions**
+>---
+>Imagine we have the following array:
+>```js
+>const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+>```
+>Now, what if we want to just fetch the ages where drinking is legal?
+>
+>There are three options:
+>
+>The first is to use a `for` loop:
+>
+>```js
+>const canDrink = []; 
+>     for(let i = 0; i < ages.length; i++) {
+    >       if(ages[i] >= 21) {
+        >           canDrink.push(ages[i]);
+    >   }
+>};
+>```
+>Messy, right?
+>
+>The second way is to use a basic `.filter` function:
+>```js
+>const canDrink = ages.filter(function(age)) {
+    >   if(age >= 21) {
+        >       return true;
+    >   }
+>};
+>```
+>
+>Much, better. But we can go one step further by using the arrow function syntax on the `.filter` function from before.
+>
+>```js
+>const canDrink = ages.filter(age => age >= 21);
+>```
+>
+>Wow! Now the whole function fits on  single line, but outputs the same thing.
+>
+>.
+
+---
+
 ## Conditionals
 
 Conditionals allow us to set certain logical conditions for our functions.
